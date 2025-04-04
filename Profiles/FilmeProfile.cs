@@ -1,5 +1,6 @@
 ﻿﻿using AutoMapper;
 using FilmesApi.Data.Dtos;
+using FilmesApi.Data.DTOs;
 using FilmesApi.Models;
 
 namespace FilmesApi.Profiles;
@@ -10,5 +11,7 @@ public class FilmeProfile : Profile
 	{
 		CreateMap<CreateFilmeDto, Filme>();
 		CreateMap<UpdateFilmeDto, Filme>();
+		CreateMap<Filme, UpdateFilmeDto>();
+		CreateMap<Filme, ReadFilmeDto>();
     }
 }
