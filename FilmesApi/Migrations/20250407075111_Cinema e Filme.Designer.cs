@@ -3,6 +3,7 @@ using System;
 using FilmesApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmesApi.Migrations
 {
     [DbContext(typeof(FilmeContext))]
-    partial class FilmeContextModelSnapshot : ModelSnapshot
+    [Migration("20250407075111_Cinema e Filme")]
+    partial class CinemaeFilme
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,9 +101,9 @@ namespace FilmesApi.Migrations
             modelBuilder.Entity("FilmesApi.Models.Cinema", b =>
                 {
                     b.HasOne("FilmesApi.Models.Endereco", "Endereco")
-                        .WithOne("Cinema")
+                        .WithOne("Cinemas")
                         .HasForeignKey("FilmesApi.Models.Cinema", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Endereco");
@@ -133,7 +135,7 @@ namespace FilmesApi.Migrations
 
             modelBuilder.Entity("FilmesApi.Models.Endereco", b =>
                 {
-                    b.Navigation("Cinema")
+                    b.Navigation("Cinemas")
                         .IsRequired();
                 });
 
