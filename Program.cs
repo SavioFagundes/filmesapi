@@ -4,6 +4,7 @@ using Pomelo.EntityFrameworkCore.MySql;
 using usuario.Models;
 using Microsoft.AspNetCore.Identity;
 using usuario.Services;
+using usuario.Profiles;
 
 namespace UsuariosApi
 {
@@ -19,9 +20,14 @@ namespace UsuariosApi
             builder.Services.AddDbContext<UsuarioDbContext>(opts => {
                 opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
-            builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<UsuarioDbContext>().AddDefaultTokenProviders();
+            builder.Services.AddIdentity<usuario.Models.Usuario, IdentityRole>()
+                .AddEntityFrameworkStores<UsuarioDbContext>()
+                .AddDefaultTokenProviders();
+            builder.Services.AddScoped<SignInManager<usuario.Models.Usuario>>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            builder.Services.AddScoped<CadastroService>();
+            builder.Services.AddScoped<UsuarioService>();
+            builder.Services.AddScoped<TokenService>();
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

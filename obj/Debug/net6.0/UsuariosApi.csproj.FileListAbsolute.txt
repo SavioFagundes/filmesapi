@@ -43,3 +43,12 @@ F:\ProjetosVSCode\UsuariosApi\obj\Debug\net6.0\UsuariosApi.genruntimeconfig.cach
 F:\ProjetosVSCode\UsuariosApi\obj\Debug\net6.0\ref\UsuariosApi.dll
 F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Humanizer.dll
 F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\ProjetosVSCode\UsuariosApi\obj\Debug\net6.0\UsuariosApi.sourcelink.json
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.Bcl.Memory.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

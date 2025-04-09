@@ -4,7 +4,7 @@ using usuario.Models;
 
 namespace usuario.Data
 {
-    public class UsuarioDbContext : IdentityDbContext<Usuario>
+    public class UsuarioDbContext : IdentityDbContext<Models.Usuario>
     {
         public UsuarioDbContext(DbContextOptions<UsuarioDbContext> opts) : base(opts)
         {

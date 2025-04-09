@@ -8,7 +8,7 @@ namespace usuario.Profiles
     {
         public UsuarioProfile()
         {
-            CreateMap<CreateUsuarioDto, Usuario>();
+            CreateMap<CreateUsuarioDto, Models.Usuario>();
             
         }
     }
