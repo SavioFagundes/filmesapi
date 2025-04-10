@@ -7,6 +7,12 @@ namespace usuario.Services
 {
     public class TokenService
     {
+        private  IConfiguration _configuration;
+        public TokenService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public string GenerateToken(Models.Usuario usuario)
         {
             Claim[] claims = new Claim[]
@@ -15,7 +21,7 @@ namespace usuario.Services
                 new Claim("id", usuario.Id),
                 new Claim(ClaimTypes.DateOfBirth, usuario.DataNascimento.ToString())
             };
-            var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("0asdhasdjas09djsad"));
+            var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SymmetricSecurityKey"]));
             var signingCredentials = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
                 expires: DateTime.Now.AddMinutes(10),

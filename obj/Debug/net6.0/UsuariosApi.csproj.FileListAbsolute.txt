@@ -52,3 +52,6 @@ F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTo
 F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+F:\ProjetosVSCode\UsuariosApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

@@ -5,7 +5,11 @@ using usuario.Models;
 using Microsoft.AspNetCore.Identity;
 using usuario.Services;
 using usuario.Profiles;
-
+using Microsoft.AspNetCore.Authorization;
+using usuario.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace UsuariosApi
 {
     public class Program
@@ -16,7 +20,7 @@ namespace UsuariosApi
 
             // Add services to the container.
 
-            var connectionString = builder.Configuration.GetConnectionString("UsuarioConnection");
+            var connectionString = builder.Configuration["SymmetricSecurityKey:UsuarioConnection"];
             builder.Services.AddDbContext<UsuarioDbContext>(opts => {
                 opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
@@ -25,9 +29,26 @@ namespace UsuariosApi
                 .AddDefaultTokenProviders();
             builder.Services.AddScoped<SignInManager<usuario.Models.Usuario>>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddAuthorization(options =>{options.AddPolicy("IdadeMinima", policy => policy.AddRequirements(new IdadeMinima(18)));});
+            builder.Services.AddSingleton<IAuthorizationHandler, IdadeAuthorization>();
             builder.Services.AddScoped<UsuarioService>();
             builder.Services.AddScoped<TokenService>();
-
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            }).AddJwtBearer("JwtBearer", options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SymmetricSecurityKey"])),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -43,7 +64,7 @@ namespace UsuariosApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
